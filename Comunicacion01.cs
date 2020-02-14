@@ -29,7 +29,9 @@ namespace SocketERTramas
         private string[] frame = {
             // ventas Normal
             "CN00\u001c000000000118\u001c000000000018\u001c000000000000\u001c000002",
-            "CN000000000001184000000000018000000000000000002"
+            "CN01",
+            "CS00",
+            "CN00000000000118000000000018000000000000000002"
         };
 
         #endregion
@@ -133,49 +135,31 @@ namespace SocketERTramas
 
         private string trama() {
 
-            return frame[0];
+            return frame[2];
         }
 
-        private bool POSECR(int paso = 0) {
-
-            switch (paso)
-            {
-                case 1:
-
-                default: return true;
-            }
-        }
         private bool ECRPOS() {
             string data = null;
             char dataChar;
-            // Data buffer for incoming data.  
             byte[] bytes = new Byte[1024];
 
             // Create a TCP/IP socket.  
             Socket listener = new Socket(ConnectLocal.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);
-
-            // Bind the socket to the local endpoint and   
-            // listen for incoming connections.  
             try
             {
                 listener.Bind(ConnectLocal);
                 listener.Listen(5);
                 listener.ReceiveTimeout = Timeout;
                 listener.SendTimeout = Timeout;
-                // Start listening for connections.  
 
-                    Console.WriteLine("Waiting for a connection...");
-                    // Program is suspended while waiting for an incoming connection.  
+                    Console.WriteLine("connection..."); 
                     Socket handler = listener.Accept();
                     data = null;
 
                    
-
-                    // An incoming connection needs to be processed.  
                     while (true)
                     {
-                        //int bytesRec = handler.Receive(bytes);
                         handler.LingerState = new LingerOption(true, 10);
                         handler.Receive(SentAndReceivedBytes);
                         data += Encoding.ASCII.GetString(SentAndReceivedBytes);
@@ -185,6 +169,7 @@ namespace SocketERTramas
                         if (data.Equals(ENQ))
                         {
                             SentAndReceivedBytes = (new ASCIIEncoding()).GetBytes(trama());
+                            Console.WriteLine(trama().ToString());
                             handler.Send(SentAndReceivedBytes);
                             var port = ((IPEndPoint)handler.RemoteEndPoint).Port;
 
@@ -206,7 +191,7 @@ namespace SocketERTramas
                                         handler.Receive(SentAndReceivedBytes);
 
                                         dataChar = Convert.ToChar(SentAndReceivedBytes[0]);
-                                        Console.WriteLine("EOT {0}", dataChar);
+                                        Console.WriteLine("EOT {0}", dataChar.ToString());
                                         if (!dataChar.ToString().Equals(EOT))
                                         {
 
@@ -222,19 +207,13 @@ namespace SocketERTramas
                                 Console.WriteLine("antes del Break: {0}", data);
                             }
                             handler.Send((new ASCIIEncoding()).GetBytes(ACK));
-                            data = handler.Receive(SentAndReceivedBytes).ToString();
-                        Console.WriteLine(data);
+                        Console.WriteLine("Envia ACK {0}", ACK);
+                        data = handler.Receive(SentAndReceivedBytes).ToString();
+                        Console.WriteLine("Recibe {0}", data);
                         break;
                         }
                     };
-
-                    // Show the data on the console.  
                     Console.WriteLine("Final del todo : {0}", data);
-
-                    // Echo the data back to the client.  
-                    // byte[] msg = Encoding.ASCII.GetBytes(data);
-
-                    // handler.Send(msg);
                     handler.Shutdown(SocketShutdown.Both);
                     handler.Close();
                     return true;
@@ -243,6 +222,7 @@ namespace SocketERTramas
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
+                Acknowledge();
                 return false;
             }
             finally { listener.Close(); }
