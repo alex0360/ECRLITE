@@ -133,9 +133,9 @@ namespace SocketERTramas
             }
         }
 
-        private string trama() {
+        private string trama(int i) {
 
-            return frame[2];
+            return frame[i];
         }
 
         private bool ECRPOS() {
@@ -168,8 +168,8 @@ namespace SocketERTramas
 
                         if (data.Equals(ENQ))
                         {
-                            SentAndReceivedBytes = (new ASCIIEncoding()).GetBytes(trama());
-                            Console.WriteLine(trama().ToString());
+                            SentAndReceivedBytes = (new ASCIIEncoding()).GetBytes(trama(3));
+                            Console.WriteLine(trama(3).ToString());
                             handler.Send(SentAndReceivedBytes);
                             var port = ((IPEndPoint)handler.RemoteEndPoint).Port;
 
