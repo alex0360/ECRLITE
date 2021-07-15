@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Merchant Info
+  description: Documentación de los servicios web para la Gestión de los Comercios
+  version: '1.0.0'
+tags:
+ - name: Terminales Activas
+paths:  
+  '/merchantinfo/terminals/fiscal-identities/{fiscalIdentity}':
+    get:
+      tags:
+        - Terminales Activas
+      summary: Consultar las Terminales Activas de un Comercio por el Registro Nacional de Contribuyentes (RNC)
+      description: Método para consultar las Terminales Activas de un Registro Nacional de Contribuyentes (RNC).
+      parameters:
+        - $ref: 'resources/common/parameters.yaml#/components/parameters/FiscalIdentity'
+      responses:
+        200:
+          description: Operación realizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: 'resources/merchantinfo/terminals/schemas.yaml#/components/schemas/FiscalIdentities'
+        404:
+          description: No hubo resultados
+          content:
+            application/json:
+              schema:
+                example:
+                  message: "No existen terminales activas para este RNC"
+        406:
+          description: Parámetro inválido
+          content:
+            application/json:
+              schema:
+                example:
+                  - message: "Registro Nacional de Contribuyentes (RNC): {FiscalIdentity} no está sintácticamente correcto"
+                  - message: "Registro Nacional de Contribuyentes (RNC): {FiscalIdentity} no existe"
+        500:
+          $ref: 'resources/common/responses.yaml#/components/responses/DefaultError'
+  '/merchantinfo/terminals/merchants/{merchantId}':
+    get:
+      tags:
+        - Terminales Activas
+      summary: Consultar las Terminales Activas de un Comercio
+      description: Método para consultar las Terminales Activas de un Comercio.
+      parameters:
+        - $ref: 'resources/common/parameters.yaml#/components/parameters/MerchantId'
+      responses:
+        200:
+          description: Operación realizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: 'resources/merchantinfo/terminals/schemas.yaml#/components/schemas/Merchants2'
+        404:
+          description: No hubo resultados
+          content:
+            application/json:
+              schema:
+                example:
+                  message: "No existen terminales activas para este Comercio"
+        406:
+          description: Parámetro inválido
+          content:
+            application/json:
+              schema:
+                example:
+                - message: "Número de Comercio: {merchantId} no está sintácticamente correcto"
+                - message: "Número de Comercio: {merchantId} no existe"
+        500:
+          $ref: 'resources/common/responses.yaml#/components/responses/DefaultError'
