@@ -1,0 +1,136 @@
+components:
+  schemas:
+    TerminalsFiscalIdentity:
+      type: object
+      properties:
+        FiscalIdentity:
+          type: integer
+          example: 101654325
+        FiscalName:
+          type: string
+          example: "Consorcio de Tarjetas Dominicanas, S. A."
+        Terminals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Terminal'
+    Terminal:
+      type: integer
+      example: 
+        - 10317761
+        - 11375282
+        - 14772660
+    FiscalIdentities:
+      type: object
+      properties:
+        FiscalIdentity:
+          type: integer
+          example: 101654325
+        FiscalName:
+          type: string
+          example: "Consorcio de Tarjetas Dominicanas, S. A."
+        Merchants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Merchants'
+    Merchants:
+      type: object
+      properties:
+        MerchantId:
+          type: integer
+          example: 349000000
+        MerchantName:
+          type: string
+          example: "CardNET Prueba"
+        EmailAddress:
+          type: string
+          example: "yrosario@cardnet.com.do"
+        PhoneNumber:
+          type: string
+          example: "8094733200"
+        AddressLine1:
+          type: string
+          example: "C/ Max Henríquez Ureña"
+        AddressLine2:
+          type: string
+          example: "Ensanche Naco"
+        PostalCode:
+          type: integer
+          example: 10121
+        TownDistrict:
+          type: string
+          example: "Distrito Nacional"
+        Province:
+          type: string
+          example: "Santo Domingo"
+        TerminalsId:
+          type: integer
+          example: 
+            - 10317761
+            - 11375282
+            - 14772660
+        OrganizationNumber:
+          type: integer
+          example: 349
+        MerchantCategoryCodeId:
+          type: integer
+          example: 5411
+        ContactName:
+          type: string
+          example: "Carlos David Valdez"
+        AffinityGroup:
+          type: string
+          example: "PYME"
+    Merchants2:
+      type: object
+      properties:
+        MerchantId:
+          type: integer
+          example: 349000000
+        MerchantName:
+          type: string
+          example: "CardNET Prueba"
+        FiscalIdentity:
+          type: integer
+          example: 101654325
+        FiscalName:
+          type: string
+          example: "Consorcio de Tarjetas Dominicanas, S. A."
+        EmailAddress:
+          type: string
+          example: "yrosario@cardnet.com.do"
+        PhoneNumber:
+          type: string
+          example: "8094733200"
+        AddressLine1:
+          type: string
+          example: "C/ Max Henríquez Ureña"
+        AddressLine2:
+          type: string
+          example: "Ensanche Naco"
+        PostalCode:
+          type: integer
+          example: 10121
+        TownDistrict:
+          type: string
+          example: "Distrito Nacional"
+        Province:
+          type: string
+          example: "Santo Domingo"
+        TerminalsId:
+          type: integer
+          example: 
+            - 10317761
+            - 11375282
+            - 14772660
+        OrganizationNumber:
+          type: integer
+          example: 349
+        MerchantCategoryCodeId:
+          type: integer
+          example: 5411
+        ContactName:
+          type: string
+          example: "Carlos David Valdez"
+        AffinityGroup:
+          type: string
+          example: "PYME"
