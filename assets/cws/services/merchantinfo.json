@@ -25,7 +25,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "resources/merchantinfo/terminals/schemas.yaml#/components/schemas/FiscalIdentities"
+                                    "$ref": "resources/merchantinfo/terminals/schemas.json#/components/schemas/FiscalIdentities"
                                 }
                             }
                         }
@@ -43,10 +43,10 @@
                         }
                     },
                     "404": {
-                        "$ref": "resources/common/responses.yaml#/components/responses/404"
+                        "$ref": "resources/common/responses.json#/components/responses/404"
                     },
                     "405": {
-                        "$ref": "resources/common/responses.yaml#/components/responses/405"
+                        "$ref": "resources/common/responses.json#/components/responses/405"
                     },
                     "406": {
                         "description": "Parámetro inválido",
@@ -65,7 +65,7 @@
                         }
                     },
                     "500": {
-                        "$ref": "resources/common/responses.yaml#/components/responses/500"
+                        "$ref": "resources/common/responses.json#/components/responses/500"
                     }
                 }
             }
@@ -86,7 +86,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "resources/merchantinfo/terminals/schemas.yaml#/components/schemas/Merchants2"
+                                    "$ref": "resources/merchantinfo/terminals/schemas.json#/components/schemas/Merchants2"
                                 }
                             }
                         }
@@ -104,10 +104,10 @@
                         }
                     },
                     "404": {
-                        "$ref": "resources/common/responses.yaml#/components/responses/404"
+                        "$ref": "resources/common/responses.json#/components/responses/404"
                     },
                     "405": {
-                        "$ref": "resources/common/responses.yaml#/components/responses/405"
+                        "$ref": "resources/common/responses.json#/components/responses/405"
                     },
                     "406": {
                         "description": "Parámetro inválido",
@@ -126,7 +126,7 @@
                         }
                     },
                     "500": {
-                        "$ref": "resources/common/responses.yaml#/components/responses/500"
+                        "$ref": "resources/common/responses.json#/components/responses/500"
                     }
                 }
             }

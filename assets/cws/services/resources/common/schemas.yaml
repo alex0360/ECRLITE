@@ -1,28 +1,17 @@
 components:
   schemas:
-    MerchantsNotFound:
+    404:
       properties:
         message:
           type: string
-          example: "No fue posible leer los Comercios"
-    MerchantNotFound:
+          example: "Recurso no encontrado"
+    405:
       properties:
         message:
           type: string
-          example: "Número de Comercio: '{merchantId}' no existe"
-    MerchantInputInvalid:
-      properties:
-        message:
-          type: string
-          example: "Número de Comercio: '{merchantId}' no está sintácticamente correcto"
-    Default500:
+          example: "Este método ya no esta permitido"
+    500:
       properties:
         message:
           type: string
           example: "Hubo un problema al intentar realizar la operación"
-    Gone:
-      properties:
-        message:
-          type: string
-          example: "El contenido solicitado ha sido borrado del servidor"
-      

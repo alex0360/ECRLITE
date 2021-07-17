@@ -1,0 +1,30 @@
+{
+  "components": {
+    "schemas": {
+      "404": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Recurso no encontrado"
+          }
+        }
+      },
+      "405": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Este método ya no esta permitido"
+          }
+        }
+      },
+      "500": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Hubo un problema al intentar realizar la operación"
+          }
+        }
+      }
+    }
+  }
+}

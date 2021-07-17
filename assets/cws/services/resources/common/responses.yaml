@@ -1,68 +1,20 @@
 components:
   responses:
-    RequestNotFound:
-      description: Request not found
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/RequestNotFound'
-    MerchantsNotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/MerchantsNotFound'
-    TerminalsNotFound:
-      description: failed
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/TerminalsNotFound'
-    MerchantNotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/MerchantNotFound'
-    MerchantInputInvalid:
-      description: Value invalid
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/MerchantInputInvalid'
-    FiscalIdentityNotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/FiscalIdentityNotFound'
-    FiscalIdentityInputInvalid:
-      description: Value invalid
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/FiscalIdentityInputInvalid'
-    InputInvalid:
-      description: Input invalid
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/InputInvalid'
-    MisdirectedRequest:
-      description: Misdirected Request
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/MisdirectedRequest'
-    NotAcceptable:
-      description: Request not processed
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/components/schemas/NotAcceptable'
-    DefaultError:
+    404:
       description: Operación fallida
       content:
         application/json:
           schema:
-            $ref: 'schemas.yaml#/components/schemas/Default500'
+            $ref: 'schemas.yaml#/components/schemas/404'
+    405:
+      description: Método no permitido
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas.yaml#/components/schemas/405'
+    500:
+      description: Operación fallida
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas.yaml#/components/schemas/500'

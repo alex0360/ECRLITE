@@ -21,13 +21,17 @@ paths:
             application/json:
               schema:
                 $ref: 'resources/merchantinfo/terminals/schemas.yaml#/components/schemas/FiscalIdentities'
-        404:
-          description: No hubo resultados
+        204:
+          description: Operación realizada exitosamente
           content:
             application/json:
               schema:
                 example:
                   message: "No existen terminales activas para este RNC"
+        404:
+          $ref: 'resources/common/responses.yaml#/components/responses/404'
+        405:
+          $ref: 'resources/common/responses.yaml#/components/responses/405'
         406:
           description: Parámetro inválido
           content:
@@ -37,7 +41,7 @@ paths:
                   - message: "Registro Nacional de Contribuyentes (RNC): {FiscalIdentity} no está sintácticamente correcto"
                   - message: "Registro Nacional de Contribuyentes (RNC): {FiscalIdentity} no existe"
         500:
-          $ref: 'resources/common/responses.yaml#/components/responses/DefaultError'
+          $ref: 'resources/common/responses.yaml#/components/responses/500'
   '/merchantinfo/terminals/merchants/{merchantId}':
     get:
       tags:
@@ -53,13 +57,17 @@ paths:
             application/json:
               schema:
                 $ref: 'resources/merchantinfo/terminals/schemas.yaml#/components/schemas/Merchants2'
-        404:
-          description: No hubo resultados
+        204:
+          description: Operación realizada exitosamente
           content:
             application/json:
               schema:
                 example:
                   message: "No existen terminales activas para este Comercio"
+        404:
+          $ref: 'resources/common/responses.yaml#/components/responses/404'
+        405:
+          $ref: 'resources/common/responses.yaml#/components/responses/405'
         406:
           description: Parámetro inválido
           content:
@@ -69,4 +77,4 @@ paths:
                 - message: "Número de Comercio: {merchantId} no está sintácticamente correcto"
                 - message: "Número de Comercio: {merchantId} no existe"
         500:
-          $ref: 'resources/common/responses.yaml#/components/responses/DefaultError'
+          $ref: 'resources/common/responses.yaml#/components/responses/500'
